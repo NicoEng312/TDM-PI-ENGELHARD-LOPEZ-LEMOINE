@@ -1,39 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./header.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './header.css';
 
-function Header() {
-  return (
-    <nav>
-      <ul className="nav nav-tabs my-4">
+class Header extends Component {
+  cerrarSesion() {
+    document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    window.location.href = '/';
+  }
 
-        <li className="nav-item">
-          <Link className="nav-link" to="/">Home</Link>
-        </li>
+  render() {
+    let haySession = document.cookie.includes('session');
 
-        <li className="nav-item">
-          <Link className="nav-link" to="/movies">Películas</Link>
-        </li>
-
-        <li className="nav-item">
-          <Link className="nav-link" to="/series">Series</Link>
-        </li>
-
-        <li className="nav-item">
-          <Link className="nav-link" to="/favorites">Favoritas</Link>
-        </li>
-
-        <li className="nav-item ml-auto">
-          <Link className="nav-link" to="/register">Registro</Link>
-        </li>
-
-        <li className="nav-item">
-          <Link className="nav-link" to="/login">Login</Link>
-        </li>
-
-      </ul>
-    </nav>
-  );
+    return (
+      <header>
+        <Link to="/"><h1>MovieApp</h1></Link>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            {!haySession && <li><Link to="/login">Login</Link></li>}
+            {!haySession && <li><Link to="/register">Crear Cuenta</Link></li>}
+            {haySession && <li><Link to="/favoritos">Favoritos</Link></li>}
+            <li><Link to="/vertodas/peliculas-populares">Películas</Link></li>
+            <li><Link to="/vertodas/series-populares">Series</Link></li>
+            {haySession &&
+              <li><button onClick={() => this.cerrarSesion()}>Cerrar Sesión</button></li>
+            }
+          </ul>
+        </nav>
+      </header>
+    );
+  }
 }
 
 export default Header;
