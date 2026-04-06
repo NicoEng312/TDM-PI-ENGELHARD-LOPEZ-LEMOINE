@@ -1,30 +1,37 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
 
-import Home from "./screens/home/Home";
-import Login from "./screens/login/Login";
-import Register from "./screens/register/Register";
-import Movies from "./screens/movies/Movies";
-import Series from "./screens/series/Series";
+import Home from './screens/home/home';
+import Login from './screens/login/login';
+import Register from './screens/register/register';
+import Detalle from './screens/detalle/detalle';
+import Favoritos from './screens/favoritos/favoritos';
+import Resultados from './screens/resultados/resultados';
+import VerTodas from './screens/vertodas/vertodas';
+import NotFound from './screens/notfound/notfound';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Header />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/series" element={<Series />} />
-      </Routes>
-
-      <Footer />
-    </BrowserRouter>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route path="/" exact={true} component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/detalle/:tipo/:id" component={Detalle} />
+          <Route path="/favoritos" component={Favoritos} />
+          <Route path="/resultados/:tipo/:query" component={Resultados} />
+          <Route path="/vertodas/:categoria" component={VerTodas} />
+          <Route component={NotFound} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
