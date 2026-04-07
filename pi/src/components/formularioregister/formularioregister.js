@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './formularioregister.css';
 
 class FormularioRegister extends Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class FormularioRegister extends Component {
     } else {
       usuarios.push({ email: this.state.email, password: this.state.password });
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
-      document.cookie = 'session=true';
       this.setState({ error: '' });
       window.location.href = '/';
     }
@@ -39,7 +39,7 @@ class FormularioRegister extends Component {
 
   render() {
     return (
-      <form onSubmit={(event) => this.evitarSubmit(event)}>
+      <form className="form-register" onSubmit={(event) => this.evitarSubmit(event)}>
         <label>Email:</label>
         <input
           type="email"

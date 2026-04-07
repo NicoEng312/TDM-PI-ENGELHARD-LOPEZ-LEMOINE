@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Buscador from '../../components/Buscador/Buscador';
-import SeccionPeliculas from '../../components/seccionpeliculas/Seccionpeliculas';
-import SeccionSeries from '../../components/seccionseries/Seccionseries';
+import SeccionPeliculas from '../../components/seccionpeliculas/seccionpeliculas';
+import SeccionSeries from '../../components/seccionseries/seccionseries';
 
 class Home extends Component {
   render() {
