@@ -18,7 +18,7 @@ class SeccionPeliculas extends Component {
       .catch(error => console.log(error));
   }
 
-  render() {
+  render() {        
     return (
       <>
         <h2>{this.props.titulo}</h2>

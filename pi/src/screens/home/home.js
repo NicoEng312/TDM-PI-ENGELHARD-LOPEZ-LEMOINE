@@ -3,7 +3,6 @@ import Buscador from '../../components/Buscador/Buscador';
 import SeccionPeliculas from '../../components/seccionpeliculas/Seccionpeliculas';
 import SeccionSeries from '../../components/seccionseries/Seccionseries';
 
-
 class Home extends Component {
   render() {
     return (
@@ -17,7 +16,4 @@ class Home extends Component {
   }
 }
 
-
 export default Home;
-
-
