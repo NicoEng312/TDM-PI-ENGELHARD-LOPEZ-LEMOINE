@@ -12,7 +12,7 @@ import Favoritos from './screens/favoritos/favoritos';
 import Resultados from './screens/resultados/resultados';
 import VerTodas from './screens/vertodas/vertodas';
 import NotFound from './screens/notfound/notfound';
-import SeccionPeliculas from './components/seccionpeliculas/seccionpeliculas';
+
 
 class App extends Component {
   render() {
@@ -29,7 +29,7 @@ class App extends Component {
           <Route path="/vertodas/:categoria" component={VerTodas} />
           <Route component={NotFound} />
         </Switch>
-        <SeccionPeliculas />
+
         <Footer />
       </div>
     );
