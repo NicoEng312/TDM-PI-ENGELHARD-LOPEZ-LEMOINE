@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import './Buscador.css';
 
 class Buscador extends Component {
 
@@ -12,30 +13,23 @@ class Buscador extends Component {
 
     onSubmit(event){
         event.preventDefault()
-        console.log('props de buscador', this.props)
         this.props.history.push('/busqueda/' + this.state.search)
     }
 
     guardarBusqueda(event){
-        this.setState(
-            {search: event.target.value},
-            () => console.log('log desde el setState extendido:', this.state.search)
-        )
-        console.log('El valor en estado es:', this.state.search)
+        this.setState({ search: event.target.value })
     }
 
     render(){
         return(
-            <div>
-                <form onSubmit={(event)=> this.onSubmit(event)}>
-                    
-                    <input 
-                        onChange={(event)=> this.guardarBusqueda(event)} 
+            <div className="buscador">
+                <form onSubmit={(event) => this.onSubmit(event)}>
+                    <input
+                        placeholder="Buscar películas o series..."
+                        onChange={(event) => this.guardarBusqueda(event)}
                         value={this.state.search}
                     />
-
                     <button type="submit">Buscar</button>
-
                 </form>
             </div>
         )

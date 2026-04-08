@@ -1,5 +1,5 @@
 h2 {
-  color: #050505;
+  color: #ffffff;
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -7,6 +7,7 @@ h2 {
   padding: 10px 40px;
   margin: 20px 0 10px 0;
   border-left: 4px solid #e50914;
+  background-color: #141414;
 }
 
 .row.cards {
@@ -24,6 +25,8 @@ article {
   width: calc(25% - 15px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 
 article:hover {
@@ -35,10 +38,14 @@ article img {
   width: 100%;
   height: 360px;
   object-fit: cover;
+  object-position: top;
 }
 
 .cardBody {
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .card-title {
@@ -53,11 +60,6 @@ article img {
   font-size: 13px;
   line-height: 1.5;
   margin-bottom: 12px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .btn {
@@ -72,10 +74,29 @@ article img {
   transition: background-color 0.3s;
   text-decoration: none;
   margin-right: 8px;
+  margin-top: 8px;
 }
 
 .btn:hover {
   background-color: #f40612;
+}
+
+.btn-descripcion {
+  background-color: transparent;
+  color: #b3b3b3;
+  border: 1px solid #b3b3b3;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.btn-descripcion:hover {
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
 @media (max-width: 768px) {
