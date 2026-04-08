@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './card.css';
 
 class Card extends Component {
@@ -11,6 +12,10 @@ class Card extends Component {
 
   mostrarOcultarDescripcion() {
     this.setState({ mostrarDescripcion: !this.state.mostrarDescripcion });
+  }
+
+  irADetalle() {
+    this.props.history.push('/detalle/' + this.props.tipo + '/' + this.props.id);
   }
 
   render() {
@@ -31,11 +36,14 @@ class Card extends Component {
             <p className="card-text">{this.props.descripcion}</p>
           )}
 
-          <a href={this.props.link} className="btn">Ver más</a>
+          <button className="btn" onClick={() => this.irADetalle()}>
+            Ver más
+          </button>
+
         </div>
       </article>
     );
   }
 }
 
-export default Card; 
+export default withRouter(Card);

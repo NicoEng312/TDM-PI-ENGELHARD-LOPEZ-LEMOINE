@@ -12,7 +12,7 @@ class SeccionPeliculas extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://api.themoviedb.org/3/movie/${this.props.endpoint}?api_key=${API_KEY}&language=es-ES`)
+    fetch('https://api.themoviedb.org/3/movie/' + this.props.endpoint + '?api_key=' + API_KEY + '&language=es-ES')
       .then(response => response.json())
       .then(data => this.setState({ peliculas: data.results }))
       .catch(error => console.log(error));
@@ -29,7 +29,9 @@ class SeccionPeliculas extends Component {
             this.state.peliculas.map(pelicula => (
               <Card
                 key={pelicula.id}
-                image={`https://image.tmdb.org/t/p/w342${pelicula.poster_path}`}
+                id={pelicula.id}
+                tipo="movie"
+                image={'https://image.tmdb.org/t/p/w342' + pelicula.poster_path}
                 titulo={pelicula.title}
                 descripcion={pelicula.overview}
               />

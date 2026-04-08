@@ -1,7 +1,8 @@
 
 
 header {
-  background-color: #141414;
+  background-color: rgba(38, 36, 36, 0.95);
+  
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
@@ -18,7 +19,9 @@ header h1 {
   font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-decoration: none;
 }
+
 
 header nav ul {
   display: flex;
