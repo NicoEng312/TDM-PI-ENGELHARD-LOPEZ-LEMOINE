@@ -21,22 +21,8 @@ class Detalle extends Component {
       .catch(error => console.log(error));
   }
 
-  agregarFavorito() {
-    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    let yaExiste = favoritos.some(fav => fav.id === this.state.detalle.id);
-
-    if (yaExiste) {
-      favoritos = favoritos.filter(fav => fav.id !== this.state.detalle.id);
-    } else {
-      favoritos.push(this.state.detalle);
-    }
-
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
-  }
-
   render() {
     let detalle = this.state.detalle;
-    let haySession = localStorage.getItem('session') === 'true';
 
     return (
       <div className="detalle">
@@ -58,11 +44,6 @@ class Detalle extends Component {
                 <span key={genero.id + idx}>{genero.name} </span>
               ))}</p>
 
-              {haySession &&
-                <button onClick={() => this.agregarFavorito()}>
-                  Agregar / Quitar de favoritos
-                </button>
-              }
             </div>
           </div>
         )}
