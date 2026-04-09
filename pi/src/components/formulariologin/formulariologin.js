@@ -20,6 +20,7 @@ class FormularioLogin extends Component {
     if (!usuarioEncontrado || usuarioEncontrado.password !== this.state.password) {
       this.setState({ error: 'Credenciales incorrectas' });
     } else {
+      localStorage.setItem('session', 'true');
       this.setState({ error: '' });
       window.location.href = '/';
     }

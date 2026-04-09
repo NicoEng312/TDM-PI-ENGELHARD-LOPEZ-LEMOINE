@@ -36,7 +36,7 @@ class Detalle extends Component {
 
   render() {
     let detalle = this.state.detalle;
-    let haySession = document.cookie.includes('session');
+    let haySession = localStorage.getItem('session') === 'true';
 
     return (
       <div className="detalle">

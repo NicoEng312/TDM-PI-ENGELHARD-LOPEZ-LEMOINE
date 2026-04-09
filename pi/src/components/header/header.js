@@ -4,12 +4,12 @@ import './header.css';
 
 class Header extends Component {
   cerrarSesion() {
-    document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    localStorage.removeItem('session');
     window.location.href = '/';
   }
 
   render() {
-    let haySession = document.cookie.includes('session');
+    let haySession = localStorage.getItem('session') === 'true';
 
     return (
       <header>
