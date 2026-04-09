@@ -13,7 +13,7 @@ class Buscador extends Component {
 
     onSubmit(event){
         event.preventDefault()
-        this.props.history.push('/busqueda/' + this.state.search)
+        this.props.history.push('/resultados/movie/' + this.state.search)
     }
 
     guardarBusqueda(event){
