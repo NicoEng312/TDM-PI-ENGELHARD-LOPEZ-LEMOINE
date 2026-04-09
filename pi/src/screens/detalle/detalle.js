@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './detalle.css';
 
 const API_KEY = 'b1594e6717d406207ae03e5606e59437';
 
