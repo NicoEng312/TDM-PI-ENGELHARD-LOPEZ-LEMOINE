@@ -1,4 +1,7 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   text-align: center;
   background-color: #141414;
 }
@@ -19,6 +22,12 @@
   font-weight: bold;
   margin-top: 20px;
 }
+
+html, body, #root {
+    min-height: 100vh;
+    background-color: #141414;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

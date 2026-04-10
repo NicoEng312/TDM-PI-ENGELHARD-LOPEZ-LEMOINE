@@ -5,6 +5,7 @@ footer {
   justify-content: center;
   align-items: center;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.8);
+  margin-top: auto;
 }
 
 .nombres-footer {
