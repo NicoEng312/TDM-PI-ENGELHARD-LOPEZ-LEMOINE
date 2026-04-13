@@ -24,7 +24,7 @@ class FormularioLogin extends Component {
     } else if (usuarioEncontrado.password !== this.state.password) {
       this.setState({ error: 'Credenciales incorrectas' });
     } else {
-      document.cookie = 'session=true';
+      localStorage.setItem('session', 'true');
       this.setState({ error: '' });
       this.props.history.push('/');
     }
