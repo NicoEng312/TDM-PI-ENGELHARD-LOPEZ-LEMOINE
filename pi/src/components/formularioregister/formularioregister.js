@@ -14,7 +14,7 @@ class FormularioRegister extends Component {
   evitarSubmit(event) {
     event.preventDefault();
 
-    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    let usuarios = localStorage.getItem('usuarios') ? JSON.parse(localStorage.getItem('usuarios')) : [];
     let emailEnUso = usuarios.some(user => user.email === this.state.email);
 
     if (emailEnUso) {

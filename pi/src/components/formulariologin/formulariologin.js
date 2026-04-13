@@ -14,7 +14,7 @@ class FormularioLogin extends Component {
   evitarSubmit(event) {
     event.preventDefault();
 
-    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    let usuarios = localStorage.getItem('usuarios') ? JSON.parse(localStorage.getItem('usuarios')) : [];
     let usuarioEncontrado = usuarios.find(user => user.email === this.state.email);
 
     if (!usuarioEncontrado || usuarioEncontrado.password !== this.state.password) {
