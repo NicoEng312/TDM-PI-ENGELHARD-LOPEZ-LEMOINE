@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './formulariologin.css';
 
 class FormularioLogin extends Component {
@@ -15,14 +16,17 @@ class FormularioLogin extends Component {
     event.preventDefault();
 
     let usuarios = localStorage.getItem('usuarios') ? JSON.parse(localStorage.getItem('usuarios')) : [];
-    let usuarioEncontrado = usuarios.find(user => user.email === this.state.email);
+    let usuariosConEseEmail = usuarios.filter(user => user.email === this.state.email);
+    let usuarioEncontrado = usuariosConEseEmail.length > 0 ? usuariosConEseEmail[0] : null;
 
-    if (!usuarioEncontrado || usuarioEncontrado.password !== this.state.password) {
+    if (usuarioEncontrado === null) {
+      this.setState({ error: 'Credenciales incorrectas' });
+    } else if (usuarioEncontrado.password !== this.state.password) {
       this.setState({ error: 'Credenciales incorrectas' });
     } else {
-      localStorage.setItem('session', 'true');
+      document.cookie = 'session=true';
       this.setState({ error: '' });
-      window.location.href = '/';
+      this.props.history.push('/');
     }
   }
 
@@ -59,4 +63,4 @@ class FormularioLogin extends Component {
   }
 }
 
-export default FormularioLogin;
+export default withRouter(FormularioLogin);

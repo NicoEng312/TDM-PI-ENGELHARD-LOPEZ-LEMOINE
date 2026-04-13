@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './formularioregister.css';
 
 class FormularioRegister extends Component {
@@ -15,17 +16,18 @@ class FormularioRegister extends Component {
     event.preventDefault();
 
     let usuarios = localStorage.getItem('usuarios') ? JSON.parse(localStorage.getItem('usuarios')) : [];
-    let emailEnUso = usuarios.some(user => user.email === this.state.email);
+    let usuariosConEseEmail = usuarios.filter(user => user.email === this.state.email);
 
-    if (emailEnUso) {
+    if (usuariosConEseEmail.length > 0) {
       this.setState({ error: 'El email ya está en uso' });
     } else if (this.state.password.length < 6) {
       this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
     } else {
-      usuarios.push({ email: this.state.email, password: this.state.password });
-      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+      let nuevoUsuario = { email: this.state.email, password: this.state.password };
+      let nuevosUsuarios = [...usuarios, nuevoUsuario];
+      localStorage.setItem('usuarios', JSON.stringify(nuevosUsuarios));
       this.setState({ error: '' });
-      window.location.href = '/';
+      this.props.history.push('/');
     }
   }
 
@@ -62,4 +64,4 @@ class FormularioRegister extends Component {
   }
 }
 
-export default FormularioRegister;
+export default withRouter(FormularioRegister);
