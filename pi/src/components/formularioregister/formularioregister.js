@@ -24,8 +24,8 @@ class FormularioRegister extends Component {
       this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
     } else {
       let nuevoUsuario = { email: this.state.email, password: this.state.password };
-      let nuevosUsuarios = [usuarios, nuevoUsuario];
-      localStorage.setItem('usuarios', JSON.stringify(nuevosUsuarios));
+      usuarios.push(nuevoUsuario);
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
       this.setState({ error: '' });
       this.props.history.push('/');
     }
