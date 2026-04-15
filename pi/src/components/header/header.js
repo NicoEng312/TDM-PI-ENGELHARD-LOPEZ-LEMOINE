@@ -20,8 +20,8 @@ class Header extends Component {
             {!haySession && <li><Link to="/login">Login</Link></li>}
             {!haySession && <li><Link to="/register">Crear Cuenta</Link></li>}
             {haySession && <li><Link to="/favoritos">Favoritos</Link></li>}
-            <li><Link to="/vertodas/peliculas-populares">Películas</Link></li>
-            <li><Link to="/vertodas/series-populares">Series</Link></li>
+            <li><Link to="/movies">Películas</Link></li>
+            <li><Link to="/series">Series</Link></li>
             {haySession &&
               <li><button onClick={() => this.cerrarSesion()}>Cerrar Sesión</button></li>
             }
