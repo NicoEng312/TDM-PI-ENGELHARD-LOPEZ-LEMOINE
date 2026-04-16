@@ -26,7 +26,7 @@ class Movies extends Component {
 
   render() {
     let peliculasFiltradas = this.state.peliculas.filter(pelicula =>
-      this.state.filtro === '' ? true : pelicula.title === this.state.filtro
+    pelicula.title.toLowerCase().includes(this.state.filtro.toLowerCase()) 
     );
 
     return (
