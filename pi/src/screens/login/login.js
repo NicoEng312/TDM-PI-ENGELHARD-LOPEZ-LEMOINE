@@ -6,7 +6,7 @@ class Login extends Component {
     return (
       <div className="login">
         <h2>Iniciar Sesión</h2>
-        <FormularioLogin />
+        <FormularioLogin history={this.props.history} />
       </div>
     );
   }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import './formulariologin.css';
+
+const cookies = new Cookies();
 
 class FormularioLogin extends Component {
   constructor(props) {
@@ -15,18 +18,24 @@ class FormularioLogin extends Component {
   evitarSubmit(event) {
     event.preventDefault();
 
-    let usuarios = localStorage.getItem('usuarios') ? JSON.parse(localStorage.getItem('usuarios')) : [];
-    let usuariosConEseEmail = usuarios.filter(user => user.email === this.state.email);
-    let usuarioEncontrado = usuariosConEseEmail.length > 0 ? usuariosConEseEmail[0] : null;
+    let usersStorage = localStorage.getItem('users');
 
-    if (usuarioEncontrado === null) {
-      this.setState({ error: 'Credenciales incorrectas' });
-    } else if (usuarioEncontrado.password !== this.state.password) {
-      this.setState({ error: 'Credenciales incorrectas' });
+    if (usersStorage === null) {
+      this.setState({ error: 'las credenciales ingresadas son inválidas' });
     } else {
-      localStorage.setItem('session', 'true');
-      this.setState({ error: '' });
-      this.props.history.push('/');
+      let usersParseado = JSON.parse(usersStorage);
+      let usersFiltrado = usersParseado.filter(user => user.email === this.state.email);
+
+      if (usersFiltrado.length === 0) {
+        this.setState({ error: 'El usuario ingresado no existe' });
+      } else if (usersFiltrado[0].password !== this.state.password) {
+        this.setState({ error: 'las credenciales ingresadas son inválidas' });
+      } else {
+        sessionStorage.setItem('usuarioEnSesion', JSON.stringify({ sesionActiva: true }));
+        cookies.set('auth-user', usersFiltrado[0].email);
+        this.setState({ error: '' });
+        this.props.history.push('/');
+      }
     }
   }
 

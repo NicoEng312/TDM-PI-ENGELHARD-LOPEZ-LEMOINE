@@ -14,6 +14,7 @@ import Movies from './screens/movies/Movies';
 import Series from './screens/series/Series';
 import VerTodas from './screens/vertodas/vertodas';
 import NotFound from './screens/notfound/notfound';
+import MiPerfil from './screens/miperfil/miperfil';
 
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
           <Route path="/series" component={Series} />
           <Route path="/vertodas/:categoria" component={VerTodas} />
           <Route component={NotFound} />
+          <Route path="/miperfil" component={MiPerfil} />
         </Switch>
 
         <Footer />
