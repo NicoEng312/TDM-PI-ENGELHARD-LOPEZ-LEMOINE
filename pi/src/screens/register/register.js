@@ -7,7 +7,7 @@ class Register extends Component {
     return (
       <div className="register">
         <h2>Crear Cuenta</h2>
-        <FormularioRegister />
+        <FormularioRegister history={this.props.history} />
       </div>
     );
   }
