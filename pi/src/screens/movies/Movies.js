@@ -24,6 +24,17 @@ class Movies extends Component {
     this.setState({ filtro: event.target.value });
   }
 
+  cargarMas() {
+    let nuevaPagina = this.state.page + 1;
+    fetch('https://api.themoviedb.org/3/movie/popular?api_key=' + API_KEY + '&language=es-ES&page=' + nuevaPagina)
+      .then(response => response.json())
+      .then(data => this.setState({
+        peliculas: this.state.peliculas.concat(data.results),
+        page: nuevaPagina
+      }))
+      .catch(error => console.log(error));
+  }
+
   render() {
     let peliculasFiltradas = this.state.peliculas.filter(pelicula =>
     pelicula.title.toLowerCase().includes(this.state.filtro.toLowerCase()) 
@@ -58,7 +69,7 @@ class Movies extends Component {
           )}
         </section>
 
-        <button>Cargar más</button>
+        <button onClick={() => this.cargarMas()}>Cargar más</button>
       </div>
     );
   }

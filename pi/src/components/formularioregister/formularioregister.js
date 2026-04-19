@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import './formularioregister.css';
+
+const cookies = new Cookies();
 
 class FormularioRegister extends Component {
   constructor(props) {
@@ -27,19 +30,21 @@ class FormularioRegister extends Component {
     let usersParseado = usersStorage !== null ? JSON.parse(usersStorage) : [];
     let usersFiltrado = usersParseado.filter(user => user.email === this.state.email);
 
-    if (this.state.username.length < 3 && this.state.username.length > 7) {
+    if (this.state.username.length < 3 || this.state.username.length > 7) {
       this.setState({ error: 'La extensión del username debe ser de 3 a 7 caracteres' });
     } else if (!this.state.email.includes('@')) {
       this.setState({ error: 'email mal formateado' });
-    } else if (this.state.password.length < 5 && this.state.password.length > 12) {
-      this.setState({ error: 'La extensión del password debe ser de 5 a 12 caracteres' });
+    } else if (this.state.password.length < 6) {
+      this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
     } else if (usersFiltrado.length > 0) {
       this.setState({ error: 'Ya existe un usuario con el email ingresado' });
     } else {
       usersParseado.push(usuarioACrear);
       localStorage.setItem('users', JSON.stringify(usersParseado));
+      sessionStorage.setItem('usuarioEnSesion', JSON.stringify({ sesionActiva: true }));
+      cookies.set('auth-user', usuarioACrear.email);
       this.setState({ error: '' });
-      this.props.history.push('/login');
+      this.props.history.push('/');
     }
   }
 

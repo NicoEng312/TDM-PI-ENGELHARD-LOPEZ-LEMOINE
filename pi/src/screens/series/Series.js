@@ -24,6 +24,17 @@ class Series extends Component {
     this.setState({ filtro: event.target.value });
   }
 
+  cargarMas() {
+    let nuevaPagina = this.state.page + 1;
+    fetch('https://api.themoviedb.org/3/tv/popular?api_key=' + API_KEY + '&language=es-ES&page=' + nuevaPagina)
+      .then(response => response.json())
+      .then(data => this.setState({
+        series: this.state.series.concat(data.results),
+        page: nuevaPagina
+      }))
+      .catch(error => console.log(error));
+  }
+
   render() {
     let seriesFiltradas = this.state.series.filter(serie =>
     serie.name.toLowerCase().includes(this.state.filtro.toLowerCase())
@@ -58,7 +69,7 @@ class Series extends Component {
           )}
         </section>
 
-        <button>Cargar más</button>
+        <button onClick={() => this.cargarMas()}>Cargar más</button>
       </div>
     );
   }
