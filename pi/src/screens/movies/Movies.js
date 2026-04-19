@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../../components/card/card';
+import Loader from '../../components/loader/loader';
 
 const API_KEY = 'b1594e6717d406207ae03e5606e59437';
 
@@ -54,7 +55,7 @@ class Movies extends Component {
 
         <section className="row cards">
           {this.state.peliculas.length === 0 ? (
-            <p>Cargando...</p>
+            <Loader />
           ) : (
             peliculasFiltradas.map(pelicula => (
               <Card

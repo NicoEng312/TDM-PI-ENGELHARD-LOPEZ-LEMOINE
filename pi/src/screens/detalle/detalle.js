@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from '../../components/loader/loader';
 import './detalle.css';
 
 const API_KEY = 'b1594e6717d406207ae03e5606e59437';
@@ -27,7 +28,7 @@ class Detalle extends Component {
     return (
       <div className="detalle">
         {detalle === null ? (
-          <p>Cargando...</p>
+          <Loader />
         ) : (
           <div className="detalle-contenido">
             <img

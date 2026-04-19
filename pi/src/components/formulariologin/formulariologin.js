@@ -21,15 +21,15 @@ class FormularioLogin extends Component {
     let usersStorage = localStorage.getItem('users');
 
     if (usersStorage === null) {
-      this.setState({ error: 'las credenciales ingresadas son inválidas' });
+      this.setState({ error: 'Credenciales incorrectas' });
     } else {
       let usersParseado = JSON.parse(usersStorage);
       let usersFiltrado = usersParseado.filter(user => user.email === this.state.email);
 
       if (usersFiltrado.length === 0) {
-        this.setState({ error: 'El usuario ingresado no existe' });
+        this.setState({ error: 'Credenciales incorrectas' });
       } else if (usersFiltrado[0].password !== this.state.password) {
-        this.setState({ error: 'las credenciales ingresadas son inválidas' });
+        this.setState({ error: 'Credenciales incorrectas' });
       } else {
         sessionStorage.setItem('usuarioEnSesion', JSON.stringify({ sesionActiva: true }));
         cookies.set('auth-user', usersFiltrado[0].email);

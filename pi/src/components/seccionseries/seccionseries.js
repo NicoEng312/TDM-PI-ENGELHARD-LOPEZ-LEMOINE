@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../card/card';
+import Loader from '../loader/loader';
 
 const API_KEY = 'b1594e6717d406207ae03e5606e59437';
 
@@ -24,7 +25,7 @@ class SeccionSeries extends Component {
         <h2>{this.props.titulo}</h2>
         <section className="row cards">
           {this.state.series.length === 0 ? (
-            <p>Cargando...</p>
+            <Loader />
           ) : (
             this.state.series.map(serie => (
               <Card
