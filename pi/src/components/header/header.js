@@ -17,7 +17,7 @@ class Header extends Component {
 
     return (
       <header>
-        <Link to="/"><h1>MovieApp</h1></Link>
+        <Link to="/"><h1>Udesa Movies</h1></Link>
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>

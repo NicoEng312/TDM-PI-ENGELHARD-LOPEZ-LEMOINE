@@ -21,16 +21,14 @@ class FormularioRegister extends Component {
     let usuarioACrear = {
       email: this.state.email,
       password: this.state.password,
-      createdAt: Date.now()
+      
     };
 
     let usersStorage = localStorage.getItem('users');
     let usersParseado = usersStorage !== null ? JSON.parse(usersStorage) : [];
     let usersFiltrado = usersParseado.filter(user => user.email === this.state.email);
 
-    if (!this.state.email.includes('@')) {
-      this.setState({ error: 'email mal formateado' });
-    } else if (this.state.password.length < 6) {
+    if (this.state.password.length < 6) {
       this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
     } else if (usersFiltrado.length > 0) {
       this.setState({ error: 'Ya existe un usuario con el email ingresado' });

@@ -30,7 +30,7 @@ class Movies extends Component {
     fetch('https://api.themoviedb.org/3/movie/popular?api_key=' + API_KEY + '&language=es-ES&page=' + nuevaPagina)
       .then(response => response.json())
       .then(data => this.setState({
-        peliculas: this.state.peliculas.concat(data.results),
+        peliculas: [...this.state.peliculas, ...data.results],
         page: nuevaPagina
       }))
       .catch(error => console.log(error));
@@ -38,7 +38,7 @@ class Movies extends Component {
 
   render() {
     let peliculasFiltradas = this.state.peliculas.filter(pelicula =>
-    pelicula.title.toLowerCase().includes(this.state.filtro.toLowerCase()) 
+      pelicula.title.toLowerCase().includes(this.state.filtro.toLowerCase())
     );
 
     return (
@@ -47,7 +47,7 @@ class Movies extends Component {
 
         <form>
           <input
-            placeholder="Filtrar películas..."
+            placeholder=" películas..."
             onChange={(event) => this.guardarFiltro(event)}
             value={this.state.filtro}
           />

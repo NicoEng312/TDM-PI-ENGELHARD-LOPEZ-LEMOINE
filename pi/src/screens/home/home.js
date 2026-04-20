@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Buscador from '../../components/buscador/buscador';
+import Buscador from '../../components/Buscador/buscador';
 import SeccionPeliculas from '../../components/seccionpeliculas/seccionpeliculas';
 import SeccionSeries from '../../components/seccionseries/seccionseries';
 

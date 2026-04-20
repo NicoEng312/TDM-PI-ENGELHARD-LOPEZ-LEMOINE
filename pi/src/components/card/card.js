@@ -33,7 +33,7 @@ class Card extends Component {
   agregarFavorito() {
     let email = cookies.get('auth-user');
     let favoritos = localStorage.getItem('favoritos-' + email) ? JSON.parse(localStorage.getItem('favoritos-' + email)) : [];
-    let yaEsta = favoritos.some(fav => fav.id === this.props.id);
+    let yaEsta = favoritos.filter (fav => fav.id === this.props.id).length > 0;
     yaEsta ? favoritos = favoritos.filter(fav => fav.id !== this.props.id) : favoritos.push({ id: this.props.id, tipo: this.props.tipo, image: this.props.image, titulo: this.props.titulo, descripcion: this.props.descripcion });
     localStorage.setItem('favoritos-' + email, JSON.stringify(favoritos));
     this.setState({ esFavorito: !yaEsta });

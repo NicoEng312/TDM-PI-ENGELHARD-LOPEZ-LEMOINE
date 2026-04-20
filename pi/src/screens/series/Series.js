@@ -10,7 +10,7 @@ class Series extends Component {
     this.state = {
       series: [],
       page: 1,
-      filtro: '',
+      filtro: ''
     };
   }
 
@@ -30,7 +30,7 @@ class Series extends Component {
     fetch('https://api.themoviedb.org/3/tv/popular?api_key=' + API_KEY + '&language=es-ES&page=' + nuevaPagina)
       .then(response => response.json())
       .then(data => this.setState({
-        series: this.state.series.concat(data.results),
+        series: [...this.state.series, ...data.results],
         page: nuevaPagina
       }))
       .catch(error => console.log(error));
@@ -38,7 +38,7 @@ class Series extends Component {
 
   render() {
     let seriesFiltradas = this.state.series.filter(serie =>
-    serie.name.toLowerCase().includes(this.state.filtro.toLowerCase())
+      serie.name.toLowerCase().includes(this.state.filtro.toLowerCase())
     );
 
     return (
@@ -47,7 +47,7 @@ class Series extends Component {
 
         <form>
           <input
-            placeholder="Filtrar series..."
+            placeholder=" series..."
             onChange={(event) => this.guardarFiltro(event)}
             value={this.state.filtro}
           />
