@@ -9,7 +9,6 @@ class FormularioRegister extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
       email: '',
       password: '',
       error: ''
@@ -20,7 +19,6 @@ class FormularioRegister extends Component {
     event.preventDefault();
 
     let usuarioACrear = {
-      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
       createdAt: Date.now()
@@ -30,9 +28,7 @@ class FormularioRegister extends Component {
     let usersParseado = usersStorage !== null ? JSON.parse(usersStorage) : [];
     let usersFiltrado = usersParseado.filter(user => user.email === this.state.email);
 
-    if (this.state.username.length < 3 || this.state.username.length > 7) {
-      this.setState({ error: 'La extensión del username debe ser de 3 a 7 caracteres' });
-    } else if (!this.state.email.includes('@')) {
+    if (!this.state.email.includes('@')) {
       this.setState({ error: 'email mal formateado' });
     } else if (this.state.password.length < 6) {
       this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
@@ -48,10 +44,6 @@ class FormularioRegister extends Component {
     }
   }
 
-  controlarUsername(event) {
-    this.setState({ username: event.target.value });
-  }
-
   controlarEmail(event) {
     this.setState({ email: event.target.value });
   }
@@ -63,13 +55,6 @@ class FormularioRegister extends Component {
   render() {
     return (
       <form className="form-register" onSubmit={(event) => this.evitarSubmit(event)}>
-        <label>Username:</label>
-        <input
-          type="text"
-          onChange={(event) => this.controlarUsername(event)}
-          value={this.state.username}
-        />
-
         <label>Email:</label>
         <input
           type="email"

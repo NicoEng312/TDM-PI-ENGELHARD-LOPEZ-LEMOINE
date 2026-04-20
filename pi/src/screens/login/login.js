@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FormularioLogin from '../../components/formulariologin/formulariologin';
+import './login.css';
 
 class Login extends Component {
   render() {
