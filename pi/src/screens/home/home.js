@@ -9,11 +9,10 @@ class Home extends Component {
       <div className="home">
         <Buscador />
         <SeccionPeliculas titulo="Películas populares" endpoint="popular" />
-        <SeccionPeliculas titulo="Películas en cartel" endpoint="now_playing" />
         <SeccionSeries titulo="Series populares" endpoint="popular" />
       </div>
     );
   }
-}
+} 
 
 export default Home;

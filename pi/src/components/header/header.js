@@ -21,7 +21,6 @@ class Header extends Component {
 
   cerrarSesion() {
     cookies.remove('auth-user');
-    sessionStorage.removeItem('usuarioEnSesion');
     this.setState({ haySession: false });
     this.props.history.push('/');
   }
