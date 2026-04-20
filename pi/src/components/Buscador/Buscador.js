@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import './Buscador.css';
+import './buscador.css';
 
 class Buscador extends Component {
 

@@ -10,8 +10,8 @@ import Register from './screens/register/register';
 import Detalle from './screens/detalle/detalle';
 import Favoritos from './screens/favoritos/favoritos';
 import Resultados from './screens/resultados/resultados';
-import Movies from './screens/movies/Movies';
-import Series from './screens/series/Series';
+import Movies from './screens/movies/movies';
+import Series from './screens/series/series';
 import NotFound from './screens/notfound/notfound';
 
 class App extends Component {
