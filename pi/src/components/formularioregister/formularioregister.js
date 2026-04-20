@@ -37,7 +37,6 @@ class FormularioRegister extends Component {
     } else {
       usersParseado.push(usuarioACrear);
       localStorage.setItem('users', JSON.stringify(usersParseado));
-      sessionStorage.setItem('usuarioEnSesion', JSON.stringify({ sesionActiva: true }));
       cookies.set('auth-user', usuarioACrear.email);
       this.setState({ error: '' });
       this.props.history.push('/');

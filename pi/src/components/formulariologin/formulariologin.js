@@ -31,7 +31,6 @@ class FormularioLogin extends Component {
       } else if (usersFiltrado[0].password !== this.state.password) {
         this.setState({ error: 'Credenciales incorrectas' });
       } else {
-        sessionStorage.setItem('usuarioEnSesion', JSON.stringify({ sesionActiva: true }));
         cookies.set('auth-user', usersFiltrado[0].email);
         this.setState({ error: '' });
         this.props.history.push('/');
